@@ -4,6 +4,8 @@ Projeto de Data Science desenvolvido como Checkpoint 4 (Regressão Linear) da di
 
 O projeto compara diferentes modelos de regressão (referência, simples, múltipla e polinomial) para estimar o **preço de venda de um veículo** a partir de suas características (ano, motor, quilometragem, combustível e câmbio), e expõe o modelo vencedor em uma **interface web interativa feita em Streamlit**.
 
+**🔗 App publicado:** [predicao-preco-veiculos-k2ycfn7nhiuefya9q3gebp.streamlit.app](https://predicao-preco-veiculos-k2ycfn7nhiuefya9q3gebp.streamlit.app/) — acesse direto pelo navegador, sem precisar instalar nada. Veja a seção [Rodar a aplicação Streamlit](#5-rodar-a-aplicação-streamlit) para essa e outras opções (incluindo rodar localmente).
+
 ---
 
 ## Sumário
@@ -225,7 +227,21 @@ Alternativa via VS Code: abra `notebook.ipynb` na extensão Jupyter do VS Code e
 
 ### 5. Rodar a aplicação Streamlit
 
-Com o ambiente virtual ativo e as dependências instaladas, a partir da **raiz do projeto** (onde está o `app.py`):
+Existem duas formas de usar o simulador — escolha a que preferir:
+
+#### Opção A — Acessar o app publicado (mais rápido, sem instalar nada)
+
+O app já está publicado no Streamlit Community Cloud:
+
+**👉 [predicao-preco-veiculos-k2ycfn7nhiuefya9q3gebp.streamlit.app](https://predicao-preco-veiculos-k2ycfn7nhiuefya9q3gebp.streamlit.app/)**
+
+Basta abrir o link no navegador. Não requer Python, dependências nem clonar o repositório. Ideal para testar rapidamente ou compartilhar com alguém. Vá direto para a seção [Usando o simulador](#usando-o-simulador).
+
+> Por rodar em infraestrutura compartilhada gratuita, o app pode levar alguns segundos para "acordar" caso esteja inativo há um tempo (comportamento normal do Streamlit Community Cloud).
+
+#### Opção B — Rodar localmente
+
+Útil para desenvolver, depurar ou usar sem depender de internet/disponibilidade do serviço na nuvem. Com o ambiente virtual ativo e as dependências instaladas (passos 1–3 acima), a partir da **raiz do projeto** (onde está o `app.py`):
 
 ```powershell
 streamlit run app.py
