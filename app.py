@@ -28,7 +28,7 @@ with col2:
 # Botão para realizar a predição
 if st.button("Calcular Preço Estimado"):
     try:
-        with open(r'model\modelo_regressao_multipla.pkl', 'rb') as f:
+        with open('model/modelo_regressao_multipla.pkl', 'rb') as f:
             modelo = pickle.load(f)
         
         # Criar dataframe com os inputs do usuário na mesma estrutura do X_train
@@ -43,6 +43,6 @@ if st.button("Calcular Preço Estimado"):
         st.success(f"O preço estimado para o veículo é de: R$ {valor_estimado:,.2f}")
         
     except FileNotFoundError:
-        st.error(r"Erro: O arquivo `modelo_regressao_multipla.pkl` não foi encontrado na pasta `model\`. Verifique o caminho.")
+        st.error("Erro: O arquivo `modelo_regressao_multipla.pkl` não foi encontrado na pasta `model/`. Verifique o caminho.")
     except Exception as e:
         st.error(f"Ocorreu um erro durante a execução: {e}")
