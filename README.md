@@ -1,15 +1,8 @@
-# Predição de Preço de Veículos 🚗
+# Predição de Preço de Veículos
 
 Projeto de Data Science desenvolvido como Checkpoint 4 (Regressão Linear) da disciplina **Data Science & Statistical Computing** — FIAP, 2026.
 
 O projeto compara diferentes modelos de regressão (referência, simples, múltipla e polinomial) para estimar o **preço de venda de um veículo** a partir de suas características (ano, motor, quilometragem, combustível e câmbio), e expõe o modelo vencedor em uma **interface web interativa feita em Streamlit**.
-
-**Integrantes do grupo:**
-- Ulisses Ribeiro - RM562230
-- Davi Melo - RM561818
-- Matheus Saavedra - RM563266
-- Arthur Berlofa - RM564438
-- Danilo dos Santos - RM561657
 
 ---
 
