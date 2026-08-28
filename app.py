@@ -5,7 +5,6 @@ import streamlit as st
 # Configuração da página
 st.set_page_config(
     page_title="Predição de Preço de Veículos",
-    page_icon="🚗",
     layout="wide",
 )
 
