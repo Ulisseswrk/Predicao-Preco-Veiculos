@@ -24,7 +24,9 @@ col1, col2 = st.columns(2)
 
 with col2:
     tipo_combustivel = st.selectbox("Tipo de Combustível", ["Gasolina", "Diesel", "Hibrido", "Eletrico"])
-    cambio = st.selectbox("Tipo de Câmbio", ["Manual", "Automático", "Semiautomático"])
+    if tipo_combustivel == "Eletrico":
+        st.session_state["cambio"] = "Automático"
+    cambio = st.selectbox("Tipo de Câmbio", ["Manual", "Automático", "Semiautomático"], key="cambio")
 
 with col1:
     ano = st.number_input("Ano de Fabricação", min_value=1990, max_value=2026, value=2020)
@@ -45,14 +47,15 @@ if combinacao_invalida:
 # Botão para realizar a predição
 if st.button("Calcular Preço Estimado", disabled=combinacao_invalida):
     try:
-        with open('model/modelo_regressao_multipla.pkl', 'rb') as f:
-            modelo = pickle.load(f)
-        
-        # Criar dataframe com os inputs do usuário na mesma estrutura do X_train
-        input_usuario = pd.DataFrame([[ano, motor, tipo_combustivel, cambio, quilometragem]],
-                                     columns=['Ano', 'Motor', 'Tipo_Combustivel', 'Cambio', 'Quilometragem'])
-        
-        predicao = modelo.predict(input_usuario)
+        with st.spinner("Calculando a predição..."):
+            with open('model/modelo_regressao_multipla.pkl', 'rb') as f:
+                modelo = pickle.load(f)
+
+            # Criar dataframe com os inputs do usuário na mesma estrutura do X_train
+            input_usuario = pd.DataFrame([[ano, motor, tipo_combustivel, cambio, quilometragem]],
+                                         columns=['Ano', 'Motor', 'Tipo_Combustivel', 'Cambio', 'Quilometragem'])
+
+            predicao = modelo.predict(input_usuario)
         
         # A função .item() força a extração do valor numérico puro de dentro do array do NumPy
         valor_estimado = float(predicao.item())
