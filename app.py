@@ -8,6 +8,37 @@ st.set_page_config(
     layout="wide",
 )
 
+# CSS para centralizar o conteúdo na página
+st.markdown(
+    """
+    <style>
+    .block-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    /* Caixas de seleção e inputs numéricos em cinza */
+    div[data-baseweb="select"] > div,
+    div[data-baseweb="base-input"] {
+        background-color: #E8E8E8;
+        border-color: #C4C4C4;
+    }
+
+    /* Botão principal com mais contraste */
+    div.stButton > button {
+        background-color: #1F4E79;
+        color: #FFFFFF;
+        border: none;
+    }
+    div.stButton > button:hover {
+        background-color: #163a5c;
+        color: #FFFFFF;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # Título principal
 st.title("Simulador Preditivo de Preço de Veículos")
 st.markdown("Insira as características do veículo para obter a estimativa de preço gerada pelo modelo de regressão múltipla.")
@@ -56,12 +87,12 @@ if st.button("Calcular Preço Estimado", disabled=combinacao_invalida):
                                          columns=['Ano', 'Motor', 'Tipo_Combustivel', 'Cambio', 'Quilometragem'])
 
             predicao = modelo.predict(input_usuario)
-        
+
         # A função .item() força a extração do valor numérico puro de dentro do array do NumPy
         valor_estimado = float(predicao.item())
-        
+
         st.success(f"O preço estimado para o veículo é de: R$ {valor_estimado:,.2f}")
-        
+
     except FileNotFoundError:
         st.error("Erro: O arquivo `modelo_regressao_multipla.pkl` não foi encontrado na pasta `model/`. Verifique o caminho.")
     except Exception as e:
